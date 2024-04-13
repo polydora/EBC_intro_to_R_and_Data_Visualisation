@@ -1,0 +1,14 @@
+---
+title: Доска объявлений
+output:
+  html_document:
+    toc: false
+    toc_float:
+      collapsed: false
+    highlight: haddock
+    include:
+      after_body: _footer.html
+    css: my_styles.css
+---
+
+Страница оформляется

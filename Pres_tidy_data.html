@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Плохие и хорошие данные</title>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="generator" content="pandoc" />
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+
+  <base target="_blank">
+
+  <script type="text/javascript">
+    var SLIDE_CONFIG = {
+      // Slide settings
+      settings: {
+                title: 'Плохие и хорошие данные',
+                        useBuilds: true,
+        usePrettify: true,
+        enableSlideAreas: true,
+        enableTouch: true,
+                        favIcon: 'Pres_tidy_data_files/logo.jpg',
+              },
+
+      // Author information
+      presenters: [
+            {
+        name:  'Вадим Хайтов' ,
+        company: '',
+        gplus: '',
+        twitter: '',
+        www: '',
+        github: ''
+      },
+            ]
+    };
+  </script>
+
+  <script src="site_libs/header-attrs-2.20/header-attrs.js"></script>
+  <link href="site_libs/ioslides-13.5.1/fonts/fonts.css" rel="stylesheet" />
+  <link href="site_libs/ioslides-13.5.1/theme/css/default.css" rel="stylesheet" />
+  <link href="site_libs/ioslides-13.5.1/theme/css/phone.css" rel="stylesheet" />
+  <script src="site_libs/ioslides-13.5.1/js/modernizr.custom.45394.js"></script>
+  <script src="site_libs/ioslides-13.5.1/js/prettify/prettify.js"></script>
+  <script src="site_libs/ioslides-13.5.1/js/prettify/lang-r.js"></script>
+  <script src="site_libs/ioslides-13.5.1/js/prettify/lang-yaml.js"></script>
+  <script src="site_libs/ioslides-13.5.1/js/hammer.js"></script>
+  <script src="site_libs/ioslides-13.5.1/js/slide-controller.js"></script>
+  <script src="site_libs/ioslides-13.5.1/js/slide-deck.js"></script>
+
+  <style type="text/css">
+
+    b, strong {
+      font-weight: bold;
+    }
+
+    em {
+      font-style: italic;
+    }
+
+    summary {
+      display: list-item;
+    }
+
+    details > summary > p:only-child {
+      display: inline;
+    }
+
+    slides > slide {
+      -webkit-transition: all 0.4s ease-in-out;
+      -moz-transition: all 0.4s ease-in-out;
+      -o-transition: all 0.4s ease-in-out;
+      transition: all 0.4s ease-in-out;
+    }
+
+    .auto-fadein {
+      -webkit-transition: opacity 0.6s ease-in;
+      -webkit-transition-delay: 0.4s;
+      -moz-transition: opacity 0.6s ease-in 0.4s;
+      -o-transition: opacity 0.6s ease-in 0.4s;
+      transition: opacity 0.6s ease-in 0.4s;
+      opacity: 0;
+    }
+/* https://github.com/ropensci/plotly/pull/524#issuecomment-468142578 */
+slide:not(.current) .plotly.html-widget{
+  display: block;
+}
+
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+            
+    slides > slide:not(.nobackground):before {
+      font-size: 12pt;
+      content: "";
+      position: absolute;
+      bottom: 20px;
+      left: 60px;
+      background: url(Pres_tidy_data_files/logo.jpg) no-repeat 0 50%;
+      -webkit-background-size: 30px 30px;
+      -moz-background-size: 30px 30px;
+      -o-background-size: 30px 30px;
+      background-size: 30px 30px;
+      padding-left: 40px;
+      height: 30px;
+      line-height: 1.9;
+    }
+  </style>
+
+  <link rel="stylesheet" href="assets/my_styles.css" type="text/css" />
+
+</head>
+
+<body style="opacity: 0">
+
+<slides class="layout-widescreen">
+
+  <slide class="title-slide segue nobackground">
+        <aside class="gdbar"><img src="Pres_tidy_data_files/logo.jpg"></aside>
+        <!-- The content of this hgroup is replaced programmatically through the slide_config.json. -->
+    <hgroup class="auto-fadein">
+      <h1 data-config-title><!-- populated from slide_config.json --></h1>
+      
+      <p data-config-presenter><!-- populated from slide_config.json --></p>
+          </hgroup>
+  </slide>
+
+<slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>Данные</h2></hgroup><article  id="данные">
+
+</article></slide><slide class=""><hgroup><h2>Исходные данные часто приходится приводить в порядок</h2></hgroup><article  id="исходные-данные-часто-приходится-приводить-в-порядок">
+
+<p>На подготовку данных к анализу уходит до 80% времени.</p>
+
+<p>Существуют определенные правила предоставления данных.</p>
+
+<p>Данные, построенные в соответствии с этими требованиями, называются <strong>tidy data</strong>, или <strong>опрятные данные</strong>.</p>
+
+</article></slide><slide class=""><hgroup><h2>Проблемы начинаются уже в электронных таблицах</h2></hgroup><article  id="проблемы-начинаются-уже-в-электронных-таблицах">
+
+<img src='Figures/Excel_sheet.jpg' title=''/>
+
+</article></slide><slide class=""><hgroup><h2>Основные ошибки</h2></hgroup><article  id="основные-ошибки">
+
+<ul>
+<li><strong>Объединенные ячейки</strong></li>
+<li>Отсутствующие заголовки столбцов, вместо них стоят какие-то числа (или ничего не стоит) или слишком длинные имена заголовков</li>
+<li>В одной ячейке находится сразу несколько значений</li>
+<li>Разнородные данные в пределах одного столбца</li>
+<li>Нет стандартного обозначения пропущенных значений</li>
+<li>Разные группы значений кодируются цветовыми выделениями</li>
+<li>Вместе с первичными данными приведены результаты их обработки (подсчитаны средние, суммы, графики и т.п.)</li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2>Принятые нормы</h2></hgroup><article  id="принятые-нормы">
+
+<ul>
+<li>Столбцы - переменные (variables)</li>
+<li>Строки - объекты (observations)</li>
+<li>В каждой переменной только один тип данных</li>
+<li>На месте пропущенных значений стоит специальный знак (в R принят <code>NA</code>)</li>
+</ul>
+
+<p><strong>При работе в Excel не должно быть никаких объединенных ячеек!</strong></p>
+
+</article></slide><slide class=""><hgroup><h2>Два формата представления данных</h2></hgroup><article  id="два-формата-представления-данных">
+
+<ul>
+<li><p>Широкий формат: данные максимально структурированы, каждая строка может нести информацию о многих элементарных объектах</p></li>
+<li><p>Длинный формат: данные минимально структурированы, каждая строка характеризует уникальный объект</p></li>
+</ul>
+
+<p>Из длинного формата легко получить широкий.</p>
+
+<p>Из широкого формата получить длинный заметно сложнее.</p>
+
+<p>Широкий формат хорош для отчетов, представления обобщенных результатов</p>
+
+<p>Длинный формат хорош для анализа</p>
+
+</article></slide><slide class=""><hgroup><h2>В каком формате представлены данные?</h2></hgroup><article  id="в-каком-формате-представлены-данные">
+
+<p><img src="Figures/Bride_format.png" width="960" style="display: block; margin: auto;" /></p>
+
+</article></slide><slide class=""><hgroup><h2>Длинный формат данных</h2></hgroup><article  id="длинный-формат-данных">
+
+<p><img src="Figures/long_format.png" width="960" style="display: block; margin: auto;" /></p>
+
+</article></slide><slide class=""><hgroup><h2>Take home message</h2></hgroup><article  id="take-home-message">
+
+<ul>
+<li>Первичные данные должны быть оформлены, как опрятные данные (tidy data).</li>
+<li>При работе в электронных таблицах (Excel) надо соблюдать правила опрятных данных.</li>
+<li>Первичные данные могут быть представлены в широком и длинном форматах.</li>
+<li>Для обработки удобнее использовать длинный формат.</li>
+</ul></article></slide>
+
+
+  <slide class="backdrop"></slide>
+
+</slides>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+<!-- map slide visiblity events into shiny -->
+<script>
+  (function() {
+    if (window.jQuery) {
+       window.jQuery(document).on('slideleave', function(e) {
+         window.jQuery(e.target).trigger('hidden');
+      });
+       window.jQuery(document).on('slideenter', function(e) {
+         window.jQuery(e.target).trigger('shown');
+      });
+    }
+  })();
+</script>
+
+</body>
+</html>
