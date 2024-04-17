@@ -43,6 +43,7 @@ output:
 
 - [Домашнее задание Вариант 1](01_intro_to_R_HW1_Var_1.html)
 - [Домашнее задание Вариант 2](01_intro_to_R_HW1_Var_2.html)
+- [Данные для выполненеия ДЗ(catsM.xlsx)](data/catsM.xlsx)
 
 <br>
 
