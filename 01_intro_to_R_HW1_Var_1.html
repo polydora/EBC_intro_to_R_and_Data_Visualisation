@@ -17,7 +17,7 @@
 <script src="site_libs/header-attrs-2.20/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
@@ -30,9 +30,10 @@
        h6 {font-size: 12px;}
        code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
        pre:not([class]) { background-color: white }</style>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
-<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
-<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
 
 <style type="text/css">
   code{white-space: pre-wrap;}
@@ -43,22 +44,110 @@
   ul.task-list{list-style: none;}
     </style>
 
-<style type="text/css">code{white-space: pre;}</style>
-<script type="text/javascript">
-if (window.hljs) {
-  hljs.configure({languages: []});
-  hljs.initHighlightingOnLoad();
-  if (document.readyState && document.readyState === "complete") {
-    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+
+
+<style type="text/css">
+  code {
+    white-space: pre;
   }
+  .sourceCode {
+    overflow: visible;
+  }
+</style>
+<style type="text/css" data-origin="pandoc">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
 }
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; } /* Alert */
+code span.an { color: #008000; } /* Annotation */
+code span.at { } /* Attribute */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #0000ff; } /* ControlFlow */
+code span.ch { color: #008080; } /* Char */
+code span.cn { } /* Constant */
+code span.co { color: #008000; } /* Comment */
+code span.cv { color: #008000; } /* CommentVar */
+code span.do { color: #008000; } /* Documentation */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.im { } /* Import */
+code span.in { color: #008000; } /* Information */
+code span.kw { color: #0000ff; } /* Keyword */
+code span.op { } /* Operator */
+code span.ot { color: #ff4000; } /* Other */
+code span.pp { color: #ff4000; } /* Preprocessor */
+code span.sc { color: #008080; } /* SpecialChar */
+code span.ss { color: #008080; } /* SpecialString */
+code span.st { color: #008080; } /* String */
+code span.va { } /* Variable */
+code span.vs { color: #008080; } /* VerbatimString */
+code span.wa { color: #008000; font-weight: bold; } /* Warning */
+
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    var j = 0;
+    while (j < rules.length) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") {
+        j++;
+        continue;
+      }
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') {
+        j++;
+        continue;
+      }
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
 </script>
 
 
 
 
-
-
+<link rel="stylesheet" href="my_styles.css" type="text/css" />
 
 
 
@@ -220,6 +309,75 @@ $(document).ready(function () {
 
 
 
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+.tocify-subheader {
+  display: inline;
+}
+.tocify-subheader .tocify-item {
+  font-size: 0.95em;
+}
+
+</style>
+
+
 
 </head>
 
@@ -227,6 +385,16 @@ $(document).ready(function () {
 
 
 <div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
 
 
 
@@ -239,20 +407,19 @@ $(document).ready(function () {
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="/mathmethr/">Mathmethr</a>
+      <a class="navbar-brand" href="/LMBE-courses/"> </a>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li><a href="index.html">О курсе</a></li>
-        <li><a href="lectures.html">Презентации и данные</a></li>
-<!--        <li><a href="evaluation_criteria.html">Критерии оценки домашних заданий</a></li>
--->
+        <li><a href="schedule.html">Расписание курса</a></li>
+	<li><a href="matherials.html">Материалы для занятий</a></li>
+	<li><a href="dashboard.html">Доска объявлений</a></li>
         <li class="dropdown">
           <a href="appendix" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Полезности<span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
-<!--             <li><a href="supplement.html">Дополнительные темы</a></li>-->
+             <li><a href="supplement.html">Дополнительные материалы</a></li>
              <li><a href="resources.html">Ссылки и ресурсы</a></li>
-             <li><a href="coding_practices.html">Правила хорошего кода</a></li>
           </ul>
         </li>
       </ul>
@@ -270,27 +437,6 @@ $(document).ready(function () {
 
 </div>
 
-<div id="TOC">
-<ul>
-<li><a href="#задание-1.-получение-справки"
-id="toc-задание-1.-получение-справки"><strong>Задание 1.</strong>
-Получение справки</a></li>
-<li><a href="#задание-2.-r-как-калькулятор-математические-операции"
-id="toc-задание-2.-r-как-калькулятор-математические-операции"><strong>Задание
-2.</strong> R как калькулятор, математические операции</a></li>
-<li><a href="#задание-3.-переменные-и-оформление-кода"
-id="toc-задание-3.-переменные-и-оформление-кода"><strong>Задание
-3.</strong> Переменные и оформление кода</a></li>
-<li><a href="#задание-4.-векторы"
-id="toc-задание-4.-векторы"><strong>Задание 4.</strong> Векторы</a></li>
-<li><a href="#задание-5.-датафреймы"
-id="toc-задание-5.-датафреймы"><strong>Задание 5.</strong>
-Датафреймы</a></li>
-<li><a href="#задание-6.-сохранение-данных-из-датафрейма-в-файл"
-id="toc-задание-6.-сохранение-данных-из-датафрейма-в-файл"><strong>Задание
-6.</strong> Сохранение данных из датафрейма в файл</a></li>
-</ul>
-</div>
 
 <p><strong>Внмание!</strong> Для выполнения домашней работы вы должны
 будете создать новый файл скрипта, который должен называться
@@ -331,21 +477,21 @@ href="data/catsM.xlsx">catsM.xlsx</a>. Поместите его в папку �
 Ctrl+Enter должно все работать без сообщения об ошибках.</p>
 <p>Суть происходящего в этом коде совершенно не важна, важно, чтобы все
 работало.</p>
-<pre class="r"><code>summary(Model)
-plot(Model, page = 1)
-cat &lt;- read_excel(&quot;Data/catsM.xlsx&quot;) # Здесь надо указать путь к файлу на вашем компьютере 
-Model &lt;- lm(Hwt ~ Bwt, data = cat)
-par(mfrow = c(2, 2))
-library(readxl)
-str cat
-install.packages(&quot;readxl&quot;)</code></pre>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="fu">summary</span>(Model)</span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="fu">plot</span>(Model, <span class="at">page =</span> <span class="dv">1</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a>cat <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">&quot;Data/catsM.xlsx&quot;</span>) <span class="co"># Здесь надо указать путь к файлу на вашем компьютере </span></span>
+<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a>Model <span class="ot">&lt;-</span> <span class="fu">lm</span>(Hwt <span class="sc">~</span> Bwt, <span class="at">data =</span> cat)</span>
+<span id="cb1-5"><a href="#cb1-5" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>))</span>
+<span id="cb1-6"><a href="#cb1-6" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
+<span id="cb1-7"><a href="#cb1-7" tabindex="-1"></a><span class="fu">str</span>(cat)</span>
+<span id="cb1-8"><a href="#cb1-8" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;readxl&quot;</span>)</span></code></pre></div>
 <p>В скрипте дожен оказаться полностью работающий код.</p>
 </div>
 <div id="задание-4.-векторы" class="section level2 smaller">
 <h2 class="smaller"><strong>Задание 4.</strong> Векторы</h2>
 <p>Выполните следующий код</p>
-<pre class="r"><code>n &lt;- round(runif(1, min = 10, max = 50),0)
-vector &lt;- round(rnorm(n, 0, 1), 0)</code></pre>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="fu">runif</span>(<span class="dv">1</span>, <span class="at">min =</span> <span class="dv">10</span>, <span class="at">max =</span> <span class="dv">50</span>),<span class="dv">0</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a>vector <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="fu">rnorm</span>(n, <span class="dv">0</span>, <span class="dv">1</span>), <span class="dv">0</span>)</span></code></pre></div>
 <p>Напишите код, который даст следующие характеристики полученного
 вектора.</p>
 <ol style="list-style-type: decimal">
@@ -363,8 +509,8 @@ vector &lt;- round(rnorm(n, 0, 1), 0)</code></pre>
 <p>Скопируйте и выполните код, который создаст датафрейм под названием
 <code>df</code></p>
 <p><em>Это абсолютно бессмысленный, учебный, набор данных!</em></p>
-<pre class="r"><code>df &lt;- data.frame(Var_1 = rep(letters[11:19], each =2), Var_2 = seq(10, 1000, length.out = 18), Var_3 = NA)
-df</code></pre>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Var_1 =</span> <span class="fu">rep</span>(letters[<span class="dv">11</span><span class="sc">:</span><span class="dv">19</span>], <span class="at">each =</span><span class="dv">2</span>), <span class="at">Var_2 =</span> <span class="fu">seq</span>(<span class="dv">10</span>, <span class="dv">1000</span>, <span class="at">length.out =</span> <span class="dv">18</span>), <span class="at">Var_3 =</span> <span class="cn">NA</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a>df</span></code></pre></div>
 <pre><code>##    Var_1      Var_2 Var_3
 ## 1      k   10.00000    NA
 ## 2      k   68.23529    NA
@@ -444,6 +590,8 @@ class="section level2 smaller">
 
 
 
+</div>
+</div>
 
 </div>
 
@@ -476,6 +624,35 @@ $(document).ready(function () {
 
 <!-- code folding -->
 
+<script>
+$(document).ready(function ()  {
+
+    // temporarily add toc-ignore selector to headers for the consistency with Pandoc
+    $('.unlisted.unnumbered').addClass('toc-ignore')
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = false;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
 
 <!-- dynamically load mathjax for compatibility with self-contained -->
 <script>
