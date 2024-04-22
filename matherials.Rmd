@@ -11,6 +11,15 @@ output:
     css: my_styles.css
 ---
 
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
+```
+
+
+
+
+
 # **Первые действия**
 
 Идеальная ситуация - это когда вы будете работать со своим собственным компьютером (ноутбук или стационарная машина). Это понадобится для выполнения домашних заданий, да и вообще, так удобнее. Если у вас нет своего собственного компьютера, то вы сможете использовать мощности компьютерного класса ЭБЦ "Крестовский остров". 
@@ -50,7 +59,7 @@ output:
 - [Презентация для самостоятельного знакомства с R](01_intro_to_r.html)
 
 
-# Видео для первого занятия
+# **Видео для первого занятия**
 
 - [Запись второй части занятия](https://drive.google.com/file/d/13mg4cG_TaXQ2W-XWjPVAAug9EE3e92rL/view?usp=drive_link)
 
@@ -63,6 +72,55 @@ output:
 - [Знакомство с R. **Видео 5**](https://drive.google.com/file/d/1XJKxIpa7Rt_ao3oOy3wHhzX4Wb0ZgfsE/view?usp=drive_link)
 
 
+# **Первые визуализации**
+
+- [Презентация о хороших и плохих данных](Pres_tidy_data.html)
+- [Презентация: введение в графический пакте `ggplot2`](Pres_intro_ggplot.html)
+- [Данные для работы в аудитории](data/fev.xls)
+
+
+## Домашнее задание 
+
+- Скачайте и поместите в папку "data" вот эти [данные](data/hydrology_2022.xls).
+- Создайте новый скрипт.
+- Вставьте в этот скрипт вот эти строчки кода (при необходимости загрузите те пакеты, которые у вас еще не поставлены) 
+
+```{r eval=FALSE, echo=TRUE}
+library(readxl)
+library(ggplot2)
+
+
+hydr <- read_excel("data/hydrology_2022.xls", na = "NA")
+
+hydr$Date <- as.POSIXct(hydr$Date_Time, format = "%d.%m.%Y %H:%M") # Этот код переводит даты в формат, понятный  для R.
+
+hydr$Month <- factor(hydr$Month, levels = c("June", "July", "August")) # Этот код задает последовательность месяцев, иначе месяцы будут упорядочены по алфавиту
+
+hydr$Month <- factor(hydr$Month, labels = c("Июнь", "Июль", "Август")) # Этот код позволяет задать русские обозначения для месяцев, которые в датасете закодированы на латинице.
+
+```
+
+- Допишите код так, чтобы в результате появился следующий график.
+
+
+```{r}
+library(readxl)
+library(ggplot2)
+library(cowplot)
+
+hydr <- read_excel("data/hydrology_2022.xls", na = "NA")
+
+hydr$Date <- as.POSIXct(hydr$Date_Time, format = "%d.%m.%Y %H:%M") # Этот код переводит даты в формат, понятный  для R.
+
+hydr$Month <- factor(hydr$Month, levels = c("June", "July", "August")) # Этот код задает последовательность месяцев, иначе месяцы будут упорядочены по алфавиту
+
+hydr$Month <- factor(hydr$Month, labels = c("Июнь", "Июль", "Август")) # Этот код позволяет задать русские обозначения для месяцев, которые в датасете закодированы на латинице.
+
+ggplot(hydr, aes(x = Date, y = S)) +
+  geom_point() +
+  theme_bw()+
+  labs(x = "Дата", y = "Соленость")
+```
 
 
 

@@ -45,6 +45,103 @@
 
 
 
+<style type="text/css">
+  code {
+    white-space: pre;
+  }
+  .sourceCode {
+    overflow: visible;
+  }
+</style>
+<style type="text/css" data-origin="pandoc">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; } /* Alert */
+code span.an { color: #008000; } /* Annotation */
+code span.at { } /* Attribute */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #0000ff; } /* ControlFlow */
+code span.ch { color: #008080; } /* Char */
+code span.cn { } /* Constant */
+code span.co { color: #008000; } /* Comment */
+code span.cv { color: #008000; } /* CommentVar */
+code span.do { color: #008000; } /* Documentation */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.im { } /* Import */
+code span.in { color: #008000; } /* Information */
+code span.kw { color: #0000ff; } /* Keyword */
+code span.op { } /* Operator */
+code span.ot { color: #ff4000; } /* Other */
+code span.pp { color: #ff4000; } /* Preprocessor */
+code span.sc { color: #008080; } /* SpecialChar */
+code span.ss { color: #008080; } /* SpecialString */
+code span.st { color: #008080; } /* String */
+code span.va { } /* Variable */
+code span.vs { color: #008080; } /* VerbatimString */
+code span.wa { color: #008000; font-weight: bold; } /* Warning */
+
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    var j = 0;
+    while (j < rules.length) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") {
+        j++;
+        continue;
+      }
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') {
+        j++;
+        continue;
+      }
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
 
 
 
@@ -399,7 +496,7 @@ R</strong></h1>
 </ul>
 </div>
 <div id="видео-для-первого-занятия" class="section level1">
-<h1>Видео для первого занятия</h1>
+<h1><strong>Видео для первого занятия</strong></h1>
 <ul>
 <li><a
 href="https://drive.google.com/file/d/13mg4cG_TaXQ2W-XWjPVAAug9EE3e92rL/view?usp=drive_link">Запись
@@ -425,6 +522,41 @@ href="https://drive.google.com/file/d/1lCRxzhJ5BS2TWIbMyvR5WL92uzSP0vAW/view?usp
 href="https://drive.google.com/file/d/1XJKxIpa7Rt_ao3oOy3wHhzX4Wb0ZgfsE/view?usp=drive_link">Знакомство
 с R. <strong>Видео 5</strong></a></li>
 </ul>
+</div>
+<div id="первые-визуализации" class="section level1">
+<h1><strong>Первые визуализации</strong></h1>
+<ul>
+<li><a href="Pres_tidy_data.html">Презентация о хороших и плохих
+данных</a></li>
+<li><a href="Pres_intro_ggplot.html">Презентация: введение в графический
+пакте <code>ggplot2</code></a></li>
+<li><a href="data/fev.xls">Данные для работы в аудитории</a></li>
+</ul>
+<div id="домашнее-задание" class="section level2">
+<h2>Домашнее задание</h2>
+<ul>
+<li>Скачайте и поместите в папку “data” вот эти <a
+href="data/hydrology_2022.xls">данные</a>.</li>
+<li>Создайте новый скрипт.</li>
+<li>Вставьте в этот скрипт вот эти строчки кода (при необходимости
+загрузите те пакеты, которые у вас еще не поставлены)</li>
+</ul>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" tabindex="-1"></a>hydr <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">&quot;data/hydrology_2022.xls&quot;</span>, <span class="at">na =</span> <span class="st">&quot;NA&quot;</span>)</span>
+<span id="cb1-6"><a href="#cb1-6" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" tabindex="-1"></a>hydr<span class="sc">$</span>Date <span class="ot">&lt;-</span> <span class="fu">as.POSIXct</span>(hydr<span class="sc">$</span>Date_Time, <span class="at">format =</span> <span class="st">&quot;%d.%m.%Y %H:%M&quot;</span>) <span class="co"># Этот код переводит даты в формат, понятный  для R.</span></span>
+<span id="cb1-8"><a href="#cb1-8" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" tabindex="-1"></a>hydr<span class="sc">$</span>Month <span class="ot">&lt;-</span> <span class="fu">factor</span>(hydr<span class="sc">$</span>Month, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;June&quot;</span>, <span class="st">&quot;July&quot;</span>, <span class="st">&quot;August&quot;</span>)) <span class="co"># Этот код задает последовательность месяцев, иначе месяцы будут упорядочены по алфавиту</span></span>
+<span id="cb1-10"><a href="#cb1-10" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" tabindex="-1"></a>hydr<span class="sc">$</span>Month <span class="ot">&lt;-</span> <span class="fu">factor</span>(hydr<span class="sc">$</span>Month, <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;Июнь&quot;</span>, <span class="st">&quot;Июль&quot;</span>, <span class="st">&quot;Август&quot;</span>)) <span class="co"># Этот код позволяет задать русские обозначения для месяцев, которые в датасете закодированы на латинице.</span></span></code></pre></div>
+<ul>
+<li>Допишите код так, чтобы в результате появился следующий график.</li>
+</ul>
+<p><img src="matherials_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+</div>
 </div>
 
 <p><small>
