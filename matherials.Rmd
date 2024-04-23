@@ -77,6 +77,7 @@ knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
 - [Презентация о хороших и плохих данных](Pres_tidy_data.html)
 - [Презентация: введение в графический пакте `ggplot2`](Pres_intro_ggplot.html)
 - [Данные для работы в аудитории](data/fev.xls)
+- [Скрипт для работы в аудитории](intro_ggplot.R)
 
 
 ## Домашнее задание 
