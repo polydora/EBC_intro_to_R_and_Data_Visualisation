@@ -533,30 +533,70 @@ href="https://drive.google.com/file/d/1XJKxIpa7Rt_ao3oOy3wHhzX4Wb0ZgfsE/view?usp
 <li><a href="data/fev.xls">Данные для работы в аудитории</a></li>
 <li><a href="intro_ggplot.R">Скрипт для работы в аудитории</a></li>
 </ul>
-<div id="домашнее-задание" class="section level2">
-<h2>Домашнее задание</h2>
+<div id="домашнее-задание-для-всех" class="section level2">
+<h2>Домашнее задание (для всех)</h2>
+</div>
+<div id="ваша-миссия" class="section level2">
+<h2>Ваша миссия</h2>
+<p>Используя <a href="data/hydrology_2022.xls">файл с данными по
+гидрологическим и метеорологическим наблюдениям</a> напишите код,
+который приведет к появлению следующих визуализаций. При этом надо
+стремиться к тому, чтобы ваши рисунки были макимально похожи на те, что
+приведены в задании.</p>
+<p><strong>Переменные в данных</strong></p>
 <ul>
-<li>Скачайте и поместите в папку “data” вот эти <a
-href="data/hydrology_2022.xls">данные</a>.</li>
-<li>Создайте новый скрипт.</li>
-<li>Вставьте в этот скрипт вот эти строчки кода (при необходимости
-загрузите те пакеты, которые у вас еще не поставлены)</li>
+<li><p><em>Date_Time</em> Дата и время</p></li>
+<li><p><em>Month</em> Месяц</p></li>
+<li><p><em>Air_T</em> Температура воздуха</p></li>
+<li><p><em>S</em> Соленость</p></li>
+<li><p><em>Wind</em> Направление ветра<br />
+</p></li>
+<li><p><em>Wave</em> Волнение моря в баллах</p></li>
+<li><p><em>Water_T</em> Температура воды</p></li>
+<li><p>Скачайте и поместите в папку “data” вот эти <a
+href="data/hydrology_2022.xls">данные</a>.</p></li>
+<li><p>Создайте новый скрипт.</p></li>
+<li><p>Вставьте в этот скрипт вот эти строчки кода (при необходимости
+загрузите те пакеты, которые у вас еще не поставлены)</p></li>
 </ul>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
 <span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a><span class="fu">library</span>(cowplot)</span>
 <span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" tabindex="-1"></a>hydr <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">&quot;data/hydrology_2022.xls&quot;</span>, <span class="at">na =</span> <span class="st">&quot;NA&quot;</span>)</span>
-<span id="cb1-6"><a href="#cb1-6" tabindex="-1"></a></span>
-<span id="cb1-7"><a href="#cb1-7" tabindex="-1"></a>hydr<span class="sc">$</span>Date <span class="ot">&lt;-</span> <span class="fu">as.POSIXct</span>(hydr<span class="sc">$</span>Date_Time, <span class="at">format =</span> <span class="st">&quot;%d.%m.%Y %H:%M&quot;</span>) <span class="co"># Этот код переводит даты в формат, понятный  для R.</span></span>
-<span id="cb1-8"><a href="#cb1-8" tabindex="-1"></a></span>
-<span id="cb1-9"><a href="#cb1-9" tabindex="-1"></a>hydr<span class="sc">$</span>Month <span class="ot">&lt;-</span> <span class="fu">factor</span>(hydr<span class="sc">$</span>Month, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;June&quot;</span>, <span class="st">&quot;July&quot;</span>, <span class="st">&quot;August&quot;</span>)) <span class="co"># Этот код задает последовательность месяцев, иначе месяцы будут упорядочены по алфавиту</span></span>
-<span id="cb1-10"><a href="#cb1-10" tabindex="-1"></a></span>
-<span id="cb1-11"><a href="#cb1-11" tabindex="-1"></a>hydr<span class="sc">$</span>Month <span class="ot">&lt;-</span> <span class="fu">factor</span>(hydr<span class="sc">$</span>Month, <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;Июнь&quot;</span>, <span class="st">&quot;Июль&quot;</span>, <span class="st">&quot;Август&quot;</span>)) <span class="co"># Этот код позволяет задать русские обозначения для месяцев, которые в датасете закодированы на латинице.</span></span></code></pre></div>
+<span id="cb1-5"><a href="#cb1-5" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" tabindex="-1"></a>hydr <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">&quot;data/hydrology_2022.xls&quot;</span>, <span class="at">na =</span> <span class="st">&quot;NA&quot;</span>)</span>
+<span id="cb1-7"><a href="#cb1-7" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" tabindex="-1"></a>hydr<span class="sc">$</span>Date <span class="ot">&lt;-</span> <span class="fu">as.POSIXct</span>(hydr<span class="sc">$</span>Date_Time, <span class="at">format =</span> <span class="st">&quot;%d.%m.%Y %H:%M&quot;</span>) <span class="co"># Этот код переводит даты в формат, понятный  для R.</span></span>
+<span id="cb1-9"><a href="#cb1-9" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" tabindex="-1"></a>hydr<span class="sc">$</span>Month <span class="ot">&lt;-</span> <span class="fu">factor</span>(hydr<span class="sc">$</span>Month, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;June&quot;</span>, <span class="st">&quot;July&quot;</span>, <span class="st">&quot;August&quot;</span>)) <span class="co"># Этот код задает последовательность месяцев, иначе месяцы будут упорядочены по алфавиту</span></span>
+<span id="cb1-11"><a href="#cb1-11" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="#cb1-12" tabindex="-1"></a>hydr<span class="sc">$</span>Month <span class="ot">&lt;-</span> <span class="fu">factor</span>(hydr<span class="sc">$</span>Month, <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;Июнь&quot;</span>, <span class="st">&quot;Июль&quot;</span>, <span class="st">&quot;Август&quot;</span>)) <span class="co"># Этот код позволяет задать русские обозначения для месяцев, которые в датасете закодированы на латинице.</span></span></code></pre></div>
 <ul>
 <li>Допишите код так, чтобы в результате появился следующий график.</li>
 </ul>
 <p><img src="matherials_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+</div>
+<div
+id="продолжение-домашнего-задания-для-желающих-осовивших-материалы-презентации"
+class="section level2">
+<h2>Продолжение домашнего задания (для желающих, осовивших материалы
+презентации)</h2>
+</div>
+<div id="рисунок-2" class="section level2">
+<h2>Рисунок 2</h2>
+<p><img src="matherials_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+</div>
+<div id="рисунок-3" class="section level2">
+<h2>Рисунок 3</h2>
+<p><img src="matherials_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+</div>
+<div id="рисунок-4" class="section level2">
+<h2>Рисунок 4 *</h2>
+<p>Это все один рисунок. На панелях <strong>A</strong> и
+<strong>B</strong> приведены средние значения, а “усами” отложены
+стандартные отклонения. На панели <strong>C</strong> приведены исходные
+значения.</p>
+<p><img src="matherials_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
 </div>
 </div>
 
