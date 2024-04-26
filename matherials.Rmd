@@ -79,6 +79,9 @@ knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
 - [Данные для работы в аудитории](data/fev.xls)
 - [Скрипт для работы в аудитории](intro_ggplot.R)
 
+<br>
+
+- [**Запись занятия**](https://drive.google.com/file/d/1-9ffLwq9PcoKfpIzirSLvXxo34wdOqsv/view?usp=sharing)
 
 ## Домашнее задание (для всех)
 
