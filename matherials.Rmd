@@ -221,3 +221,13 @@ plot_grid(Pl1, Pl2, Pl3, labels = "AUTO")
 
 - [Скрипт для работы в аудитории](intro_ggplot_continue.R)
 
+
+
+<br>
+
+- [**Запись занятия**](https://drive.google.com/file/d/1Jc26oCLY8j2pVJOpQuE3jnU1BH_NQ1bG/view?usp=sharing)
+
+
+
+
+
