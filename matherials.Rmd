@@ -219,5 +219,5 @@ plot_grid(Pl1, Pl2, Pl3, labels = "AUTO")
 
 # **Материалы для занятия 15 мая**
 
-- [Скрипт для работы в аудитории](intro_ggplot_continue.R.R)
+- [Скрипт для работы в аудитории](intro_ggplot_continue.R)
 
