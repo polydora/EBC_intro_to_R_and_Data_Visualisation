@@ -227,6 +227,31 @@ plot_grid(Pl1, Pl2, Pl3, labels = "AUTO")
 
 - [**Запись занятия**](https://drive.google.com/file/d/1Jc26oCLY8j2pVJOpQuE3jnU1BH_NQ1bG/view?usp=sharing)
 
+# **Литературное программирование**
+
+Верстаем работу Т. Ершовой
+
+- [Текст работы](data/Ershova_2023.docx)
+- [Внешняя картинка](Figures/Morphotypes_m1.jpg)
+- [Данные](data/FucBys_2023.xlsx)
+- [CSL журнала **Marine biology**](data/marine-biology.csl)
+- [CSL журнала **The Biological bulletin**](data/the-biological-bulletin.csl)
+- [CSL журнала **Academic Medicine**](data/academic-medicine.csl)
+
+<br>
+<br>
+
+# **Зачет**
+
+Необходимо создать вордовский документ, который будет включать текст, формулу, ссылки на литературные источники, внешний рисунок, рисунок, построенный средствами *ggplot* и таблицу.
+
+- [Текст работы](data/Britikov_2023.html)
+- [Внешняя картинка](Figures/trek_example.png)
+- [Данные](data/snail_movement_2023.xlsx)
+
+
+
+
 
 
 
