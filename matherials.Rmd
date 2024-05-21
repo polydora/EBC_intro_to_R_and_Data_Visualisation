@@ -238,6 +238,17 @@ plot_grid(Pl1, Pl2, Pl3, labels = "AUTO")
 - [CSL журнала **The Biological bulletin**](data/the-biological-bulletin.csl)
 - [CSL журнала **Academic Medicine**](data/academic-medicine.csl)
 
+**Результат нашей работы**
+
+Скачайте [архив с проектом](My_first_RMD.zip). Здесь вы найдете все, что мы сегодня делали. Этот архив надо распковать и далее проект можно открыть в RStudio. 
+
+Если есть желание разобраться в том, как автоматизируется работа с библиографией, то скачайте вот [этот проект](My_first_RMD_project_bibliography_included.zip) и в нем есть два RMD файла, в которых библиография генерится автоматически.
+
+
+
+
+
+
 <br>
 <br>
 
